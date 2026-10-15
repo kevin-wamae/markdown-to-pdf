@@ -1,0 +1,6 @@
+# Your own notes and generated files stay local
+build.md
+*.html
+*.pdf
+.DS_Store
+__pycache__/

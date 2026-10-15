@@ -1,0 +1,38 @@
+/* Default style for notes and documents. Edit freely. */
+@page { size: A4; margin: 18mm 18mm; }
+
+:root { --accent: #1a3a5c; }
+
+* { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, "Liberation Sans", sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.5;
+    color: #222;
+    margin: 0;
+}
+
+h1 { font-size: 22pt; margin: 0 0 8px; color: var(--accent); }
+h2 { font-size: 15pt; margin: 18px 0 6px; color: var(--accent); border-bottom: 1px solid #ccc; padding-bottom: 2px; }
+h3 { font-size: 12.5pt; margin: 14px 0 4px; color: var(--accent); }
+h4, h5, h6 { font-size: 10.5pt; margin: 10px 0 2px; }
+h1, h2, h3, h4, h5, h6 { page-break-after: avoid; }
+
+p { margin: 6px 0; }
+ul, ol { margin: 4px 0 4px 22px; padding: 0; }
+li { margin: 2px 0; }
+a { color: var(--accent); text-decoration: none; }
+hr { border: 0; border-top: 1px solid #ccc; margin: 14px 0; }
+
+blockquote { margin: 8px 0; padding: 2px 12px; border-left: 3px solid var(--accent); background: #f3f6f9; color: #333; }
+code { font-family: Menlo, Consolas, "Liberation Mono", monospace; font-size: 9.5pt; background: #f3f3f3; padding: 0 3px; border-radius: 3px; }
+pre { background: #f3f3f3; padding: 8px 10px; border-radius: 4px; overflow-x: auto; page-break-inside: avoid; }
+pre code { background: none; padding: 0; }
+mark { background: #fff3a3; }
+img { max-width: 100%; }
+
+table { border-collapse: collapse; width: 100%; margin: 8px 0; font-size: 10pt; }
+th, td { border: 1px solid #ccc; padding: 4px 8px; vertical-align: top; text-align: left; }
+th { background: #f3f6f9; }
+tr, li { page-break-inside: avoid; }
