@@ -26,8 +26,20 @@ def strip_frontmatter(text: str) -> str:
     return text[m.end():] if m else text
 
 
+def heading_anchor(text: str) -> str:
+    s = re.sub(r"[^\w\s.-]", "", text.strip().lower())
+    s = re.sub(r"\s+", "-", s)
+    return re.sub(r"^[^a-z]+", "", s)
+
+
+def heading_link(m: re.Match) -> str:
+    target = [p for p in m.group(1).split("#") if p][-1]
+    return f"[{m.group(2) or target}](#{heading_anchor(target)})"
+
+
 def inline_fixes(line: str) -> str:
     line = re.sub(r"!\[\[([^\]|#]+)(?:\|[^\]]*)?\]\]", r"![](\1)", line)             # ![[img.png]]
+    line = re.sub(r"\[\[#([^\]|]+)(?:\|([^\]]+))?\]\]", heading_link, line)            # [[#Heading|alias]] internal links
     line = re.sub(r"\[\[([^\]|]+)\|([^\]]+)\]\]", r"\2", line)                         # [[note|alias]]
     line = re.sub(r"\[\[([^\]]+)\]\]", lambda m: m.group(1).split("#")[0] or m.group(1), line)  # [[note]]
     line = re.sub(r"==(.+?)==", r"<mark>\1</mark>", line)                              # ==highlight==
